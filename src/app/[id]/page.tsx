@@ -18,11 +18,11 @@ export default async function YachtDetailPage({ params }: YachtDetailPageProps) 
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-cream via-white to-cream-dark">
+    <div className="min-h-screen luxury-pattern">
       <div className="container mx-auto px-4 py-8 md:px-8">
         <Link 
           href="/" 
-          className="inline-flex items-center gap-2 text-primary hover:text-gold transition-colors duration-200 mb-6 group"
+          className="inline-flex items-center gap-2 text-primary hover:text-gold transition-colors duration-200 mb-6 group animate-slide-in"
         >
           <svg className="w-5 h-5 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
