@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import YachtDetails from '@/components/yachts/YachtDetails';
-import { Yacht } from '@/types/yacht';
+import { fetchYachtById } from '@/services/yachtService';
+import { notFound } from 'next/navigation';
 
 interface YachtDetailPageProps {
   params: {
@@ -8,30 +9,13 @@ interface YachtDetailPageProps {
   };
 }
 
-const getYachtData = (id: string): Yacht & { toys?: string } => {
-  const dummyData: Yacht & { toys?: string } = {
-    id: "2",
-    name: "FIREBIRD",
-    type: "Motor",
-    length: "67.00",
-    maxPassengers: 12,
-    maxPassengersCruising: null,
-    bedrooms: 6,
-    maxCrew: 19,
-    url: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200&h=800&fit=crop",
-    weeklyLowAhoy: "450000",
-    weeklyLowRetail: "450000",
-    currency: "EUR",
-    toys: "Kayaking; Jet Ski; Wind Surfing; Scuba Diving Gear; Waterskis; Wakeboard; Seabob; Slide; Beach Club; Stand-up Jet Ski; Paddle Board; Diving Equiptment; Jellyfish Protection Pool; Banana Boat; inflatable towables; eFoils; Swimming Platform",
-    acceptsWeeklyCharters: true,
-    acceptsDayCharters: false,
-  };
-  
-  return dummyData;
-};
+export default async function YachtDetailPage({ params }: YachtDetailPageProps) {
+  const resolvedParams = await params;
+  const yacht = await fetchYachtById(resolvedParams?.id);
 
-export default function YachtDetailPage({ params }: YachtDetailPageProps) {
-  const yacht = getYachtData(params.id);
+  if (!yacht) {
+    notFound();
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-cream via-white to-cream-dark">

@@ -1,7 +1,7 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { Yacht } from '@/types/yacht';
 import { formatPrice } from '@/utils/formatPrice';
+import YachtImage from '@/components/common/YachtImage';
 
 interface YachtCardProps {
   yacht: Yacht;
@@ -12,7 +12,7 @@ export default function YachtCard({ yacht }: YachtCardProps) {
     <Link href={`/${yacht.id}`} className="group block">
       <div className="relative bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100/50 hover:border-gold/30 group-hover:border-gold/50">
         <div className="relative h-44 w-full overflow-hidden">
-          <Image
+          <YachtImage
             src={yacht.url}
             alt={yacht.name}
             fill

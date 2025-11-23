@@ -1,6 +1,6 @@
-import Image from 'next/image';
 import { Yacht } from '@/types/yacht';
 import { formatPrice } from '@/utils/formatPrice';
+import YachtImage from '@/components/common/YachtImage';
 
 interface YachtDetailsProps {
   yacht: Yacht & { toys?: string };
@@ -12,7 +12,7 @@ export default function YachtDetails({ yacht }: YachtDetailsProps) {
   return (
     <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100/50">
       <div className="relative h-96 md:h-[500px] w-full overflow-hidden">
-        <Image
+        <YachtImage
           src={yacht.url}
           alt={yacht.name}
           fill
