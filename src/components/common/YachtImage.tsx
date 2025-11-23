@@ -1,8 +1,9 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { getRandomUnsplashImage } from '@/utils/imageFallback';
+import ImageLoader from './ImageLoader';
 
 interface YachtImageProps {
   src: string;
@@ -25,37 +26,56 @@ export default function YachtImage({
 }: YachtImageProps) {
   const [imgSrc, setImgSrc] = useState(src);
   const [hasError, setHasError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setImgSrc(src);
+    setIsLoading(true);
+    setHasError(false);
+  }, [src]);
 
   const handleError = () => {
     if (!hasError) {
       setHasError(true);
+      setIsLoading(true);
       setImgSrc(getRandomUnsplashImage());
     }
   };
 
+  const handleLoad = () => {
+    setIsLoading(false);
+  };
+
   if (fill) {
     return (
-      <Image
-        src={imgSrc}
-        alt={alt}
-        fill
-        className={className}
-        priority={priority}
-        onError={handleError}
-      />
+      <div className="relative w-full h-full">
+        {isLoading && <ImageLoader />}
+        <Image
+          src={imgSrc}
+          alt={alt}
+          fill
+          className={className}
+          priority={priority}
+          onError={handleError}
+          onLoad={handleLoad}
+        />
+      </div>
     );
   }
 
   return (
-    <Image
-      src={imgSrc}
-      alt={alt}
-      width={width}
-      height={height}
-      className={className}
-      priority={priority}
-      onError={handleError}
-    />
+    <div className="relative">
+      {isLoading && <ImageLoader />}
+      <Image
+        src={imgSrc}
+        alt={alt}
+        width={width}
+        height={height}
+        className={className}
+        priority={priority}
+        onError={handleError}
+        onLoad={handleLoad}
+      />
+    </div>
   );
 }
-
