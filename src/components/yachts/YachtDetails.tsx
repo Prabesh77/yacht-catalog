@@ -3,7 +3,7 @@ import { formatPrice } from '@/utils/formatPrice';
 import YachtImage from '@/components/common/YachtImage';
 
 interface YachtDetailsProps {
-  yacht: Yacht & { toys?: string };
+  yacht: Yacht;
 }
 
 export default function YachtDetails({ yacht }: YachtDetailsProps) {
