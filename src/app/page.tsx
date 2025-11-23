@@ -1,65 +1,130 @@
-import Image from "next/image";
+import { Yacht } from '@/types/yacht';
+import YachtCard from '@/components/yachts/YachtCard';
+
+const dummyYachts: Yacht[] = [
+  {
+    id: '1',
+    name: 'OCEAN DREAM',
+    type: 'Motor',
+    length: '45.00',
+    maxPassengers: 12,
+    maxPassengersCruising: null,
+    bedrooms: 5,
+    maxCrew: 8,
+    url: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&h=600&fit=crop',
+    weeklyLowAhoy: '250000',
+    weeklyLowRetail: '250000',
+    currency: 'USD',
+    acceptsWeeklyCharters: true,
+    acceptsDayCharters: false,
+  },
+  {
+    id: '2',
+    name: 'AZURE MAJESTY',
+    type: 'Motor',
+    length: '60.00',
+    maxPassengers: 16,
+    maxPassengersCruising: null,
+    bedrooms: 7,
+    maxCrew: 12,
+    url: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=600&fit=crop',
+    weeklyLowAhoy: '450000',
+    weeklyLowRetail: '450000',
+    currency: 'USD',
+    acceptsWeeklyCharters: true,
+    acceptsDayCharters: false,
+  },
+  {
+    id: '3',
+    name: 'ROYAL WAVE',
+    type: 'Sail',
+    length: '35.00',
+    maxPassengers: 8,
+    maxPassengersCruising: null,
+    bedrooms: 4,
+    maxCrew: 5,
+    url: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop',
+    weeklyLowAhoy: '180000',
+    weeklyLowRetail: '180000',
+    currency: 'USD',
+    acceptsWeeklyCharters: true,
+    acceptsDayCharters: true,
+  },
+  {
+    id: '4',
+    name: 'PACIFIC STAR',
+    type: 'Motor',
+    length: '55.00',
+    maxPassengers: 14,
+    maxPassengersCruising: null,
+    bedrooms: 6,
+    maxCrew: 10,
+    url: 'https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=800&h=600&fit=crop',
+    weeklyLowAhoy: '380000',
+    weeklyLowRetail: '380000',
+    currency: 'USD',
+    acceptsWeeklyCharters: true,
+    acceptsDayCharters: false,
+  },
+  {
+    id: '5',
+    name: 'CRYSTAL SEAS',
+    type: 'Motor',
+    length: '40.00',
+    maxPassengers: 10,
+    maxPassengersCruising: null,
+    bedrooms: 5,
+    maxCrew: 7,
+    url: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop',
+    weeklyLowAhoy: '220000',
+    weeklyLowRetail: '220000',
+    currency: 'USD',
+    acceptsWeeklyCharters: true,
+    acceptsDayCharters: false,
+  },
+  {
+    id: '6',
+    name: 'HORIZON EXPLORER',
+    type: 'Motor',
+    length: '50.00',
+    maxPassengers: 12,
+    maxPassengersCruising: null,
+    bedrooms: 6,
+    maxCrew: 9,
+    url: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&h=600&fit=crop',
+    weeklyLowAhoy: '320000',
+    weeklyLowRetail: '320000',
+    currency: 'USD',
+    acceptsWeeklyCharters: true,
+    acceptsDayCharters: false,
+  }
+];
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="min-h-screen bg-gradient-to-br from-cream via-white to-cream-dark">
+      <div className="container mx-auto px-4 py-16 md:px-8 md:py-24">
+        <div className="mb-16 text-center">
+          <div className="inline-block mb-4">
+            <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto"></div>
+          </div>
+          <h1 className="text-5xl md:text-6xl font-bold text-primary mb-6 tracking-tight font-display">
+            Luxury Yacht Collection
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed font-light">
+            Discover our exclusive selection of world-class yachts, where unparalleled elegance meets exceptional craftsmanship
           </p>
+          <div className="inline-block mt-6">
+            <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto"></div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {dummyYachts.map((yacht) => (
+            <YachtCard key={yacht.id} yacht={yacht} />
+          ))}
         </div>
-      </main>
+      </div>
     </div>
   );
 }

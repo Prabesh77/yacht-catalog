@@ -10,6 +10,15 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-primary: #0a0e27;
+  --color-primary-dark: #050815;
+  --color-secondary: #1a1f3a;
+  --color-secondary-dark: #141829;
+  --color-gold: #d4af37;
+  --color-gold-dark: #b8941f;
+  --color-gold-light: #e8d5a3;
+  --color-cream: #f5f1e8;
+  --color-cream-dark: #e8e0d1;
 }
 
 @media (prefers-color-scheme: dark) {
