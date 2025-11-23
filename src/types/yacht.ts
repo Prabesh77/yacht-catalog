@@ -10,7 +10,7 @@ export type Yacht = {
   url: string;
   weeklyLowAhoy: string;
   weeklyLowRetail: string;
-  currency: string;
+  currency: string | null;
   acceptsWeeklyCharters: boolean;
   acceptsDayCharters: boolean;
   toys?: string;
